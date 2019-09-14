@@ -39,7 +39,7 @@ function bigFeaturedArticle() {
   });
 
   // Create the context
-  let context = { title: featured.title, subtitle: featured.subtitle };
+  let context = { title: featured.title, subtitle: featured.subtitle, image: featured.image };
 
   // Compile the template data into a function
   let templateScript = Handlebars.compile(template);
@@ -63,7 +63,8 @@ function smallFeaturedArticles() {
         title: x.title,
         subtitle: x.subtitle,
         date: x.date.toLocaleDateString("en-US", dateOptions),
-        category: x.category
+        category: x.category,
+        image: x.image
       };
     });
 
