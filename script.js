@@ -1,8 +1,16 @@
-// SHARED
+// SHARED SETUP
 var dateOptions = { year: "numeric", month: "short", day: "numeric" };
+var recentPostsPage = 1;
+
+// START
+categoryNavigation();
+bigFeaturedArticle();
+smallFeaturedArticles();
+archives();
+recentPosts();
 
 // CATEGORY NAMES IN NAV BAR
-{
+function categoryNavigation() {
   // Retrieve the template data from the HTML
   let template = $("#tmpl-categories-list").html();
 
@@ -17,11 +25,11 @@ var dateOptions = { year: "numeric", month: "short", day: "numeric" };
   let templateScript = Handlebars.compile(template);
   let html = templateScript(context);
 
-  $("nav").append(html);
+  $("#categories-list").append(html);
 }
 
 // BIG FEATURED ARTICLE
-{
+function bigFeaturedArticle() {
   // Retrieve the template data from the HTML
   let template = $("#tmpl-big-featured-post").html();
 
@@ -41,7 +49,7 @@ var dateOptions = { year: "numeric", month: "short", day: "numeric" };
 }
 
 // SMALL FEATURED ARTICLES
-{
+function smallFeaturedArticles() {
   // Retrieve the template data from the HTML
   let template = $("#tmpl-small-featured-posts").html();
 
@@ -77,19 +85,25 @@ var dateOptions = { year: "numeric", month: "short", day: "numeric" };
 }
 
 // ARCHIVES
-{
+function archives() {
   // Retrieve the template data from the HTML
   let template = $("#tmpl-archives").html();
 
   // Get the second and third featured posts
   let allMonths = Array.from(
     new Set(
-      articles.map(x => {
-        return x.date.toLocaleDateString("en-US", {
-          month: "long",
-          year: "numeric"
-        });
-      })
+      articles
+        .sort(function(first, second) {
+          if (first.date > second.date) return -1;
+          else if (first.date < second.date) return 1;
+          else return 0;
+        })
+        .map(x => {
+          return x.date.toLocaleDateString("en-US", {
+            month: "long",
+            year: "numeric"
+          });
+        })
     )
   ).map(x => {
     return { month: x };
@@ -108,19 +122,28 @@ var dateOptions = { year: "numeric", month: "short", day: "numeric" };
 }
 
 // RECENT POSTS
-var recentPostsPage = 1;
-{
+function recentPosts() {
   // Retrieve the template data from the HTML
   let template = $("#tmpl-recent-posts").html();
 
   let recentPosts = [];
   if (articles.length > (recentPostsPage - 1) * 5) {
     // Get the second and third featured posts
-    recentPosts = articles.sort(function(first, second) {
-      if (first.date > second.date) return -1;
-      else if (first.date < second.date) return 1;
-      else return 0;
-    });
+    recentPosts = articles
+      .sort(function(first, second) {
+        if (first.date > second.date) return -1;
+        else if (first.date < second.date) return 1;
+        else return 0;
+      })
+      .map(x => {
+        return {
+          title: x.title,
+          subtitle: x.content.substring(0, 490) + "...",
+          author: x.author,
+          date: x.date.toLocaleDateString("en-US", dateOptions),
+          category: x.category
+        };
+      });
 
     for (let i = 0; i < (recentPostsPage - 1) * 5; i++) {
       recentPosts.shift();
@@ -131,16 +154,6 @@ var recentPostsPage = 1;
     }
   }
 
-  recentPosts = recentPosts.map(x => {
-    return {
-      title: x.title,
-      subtitle: x.content.substring(0, 490) + "...",
-      author: x.author,
-      date: x.date.toLocaleDateString("en-US", dateOptions),
-      category: x.category
-    }
-  });
-
   // Create the context
   let context = {
     recentPosts: recentPosts
@@ -150,5 +163,45 @@ var recentPostsPage = 1;
   let templateScript = Handlebars.compile(template);
   let html = templateScript(context);
 
-  $("#recent-posts").append(html);
+  $("#recent-posts").html(html);
+
+  setPagingButtonsStatus();
 }
+
+// OLDER & NEWER BUTTONS - Interactions
+function setPagingButtonsStatus() {
+  if (recentPostsPage == 1) {
+    $("#newer-posts-btn").addClass("disabled");
+  } else {
+    $("#newer-posts-btn").removeClass("disabled");
+  }
+
+  if (articles.length <= recentPostsPage * 5) {
+    $("#older-posts-btn").addClass("disabled");
+  } else {
+    $("#older-posts-btn").removeClass("disabled");
+  }
+}
+
+function goToPosts() {
+  $("html, body").animate(
+    {
+      scrollTop: $("#recent-posts").offset().top
+    },
+    500
+  );
+}
+
+$("#older-posts-btn").click(function(event) {
+  recentPostsPage++;
+  recentPosts();
+  goToPosts();
+  event.preventDefault();
+});
+
+$("#newer-posts-btn").click(function(event) {
+  recentPostsPage--;
+  recentPosts();
+  goToPosts();
+  event.preventDefault();
+});

@@ -48,7 +48,7 @@
 
     <!-- CATEGORIES -->
     <div class="nav-scroller py-1 mb-2">
-      <nav class="nav d-flex justify-content-between">
+      <nav id="categories-list" class="nav d-flex justify-content-between">
         <script id="tmpl-categories-list" type="text/x-handlebars-template">
           {{#each categories}}
             <a class="p-2 text-muted" href="#">{{name}}</a>
@@ -96,23 +96,22 @@
           From the Firehose
         </h3>
 
-        <div id="recent-posts">
-          <script id="tmpl-recent-posts" type="text/x-handlebars-template">
-            {{#each recentPosts}}
+        <div id="recent-posts"></div>
+        <script id="tmpl-recent-posts" type="text/x-handlebars-template">
+          {{#each recentPosts}}
             <div class="blog-post">
               <h2 class="blog-post-title">{{title}}</h2>
               <p class="blog-post-meta">{{date}} by <a href="#">{{author}}</a> in <a href="#"><strong class="d-inline-block mb-2 text-success">{{category}}</strong></a></p>
               <p>{{subtitle}}</p>
               <p class="lead mb-0"><a href="#" class="text-normal font-weight-bold">Continue reading...</a></p>
             </div>
-            {{/each}}
-          </script>
-        </div>
+          {{/each}}
+        </script>
 
         <!-- PAGINATION -->
         <nav class="blog-pagination">
-          <a class="btn btn-outline-primary" href="#">Older</a>
-          <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
+          <a id="older-posts-btn" class="btn btn-outline-primary">Older</a>
+          <a id="newer-posts-btn" class="btn btn-outline-secondary">Newer</a>
         </nav>
 
       </div><!-- /.blog-main -->
@@ -143,9 +142,9 @@
         <div class="p-4">
           <h4 class="font-italic">Elsewhere</h4>
           <ol class="list-unstyled">
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
+            <li><a href="https://github.com/bilyanageorgieva">GitHub</a></li>
+            <li><a href="https://twitter.com/">Twitter</a></li>
+            <li><a href="https://www.facebook.com/">Facebook</a></li>
           </ol>
         </div>
       </aside><!-- /.blog-sidebar -->
@@ -161,9 +160,7 @@
 
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS, then Material Design theme and Handlebars.js -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
