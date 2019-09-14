@@ -58,14 +58,19 @@
     </div>
 
     <!-- BIG FEATURED BLOG POST -->
-    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-      <div id="big-featured-post" class="col-md-6 px-0">
-        <script id="tmpl-big-featured-post" type="text/x-handlebars-template">
-          <h1 class="display-4 font-italic">{{title}}</h1>
-          <p class="lead my-3">{{subtitle}}</p>
-        </script>
-        <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
-      </div>
+    <div id="big-featured-post" class="row mb-2">
+      <script id="tmpl-big-featured-post" type="text/x-handlebars-template">
+              <div class="col-md-12">
+                <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative";">
+                  <div class="col p-4 d-flex flex-column position-static">
+                    <h1 class="display-4 font-italic">{{title}}</h1>
+                    <p class="lead my-3">{{subtitle}}</p>
+                    <a href="#" class="stretched-link">Continue reading</a>
+                  </div>
+                  <img class="card-img-right flex-auto d-none d-md-block" style="width: 48.5%; height: 250px;" src="{{image}}" data-holder-rendered="true">
+                </div>
+              </div>
+          </script>
     </div>
 
     <!-- TWO SMALL FEATURED BLOG POSTS -->

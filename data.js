@@ -13,7 +13,7 @@ const articles = [
     title: "Villa Necchi Campiglio",
     image: "img/villa-necchi-campiglio.jpg",
     subtitle:
-      "Multiple lines of text that form the lede",
+      "Multiple lines of text that form the lede. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do. Lorem ipsum dolor sit amet.",
     category: categories.ART,
     date: new Date("12/12/2015"),
     author: "John Green",
