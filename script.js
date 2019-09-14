@@ -39,5 +39,26 @@
 
 // Two small featured articles
 {
-  
+  // Retrieve the template data from the HTML
+  let template = $("#tmpl-small-featured-posts").html();
+
+  // Get the second and third featured posts
+  let featuredPosts = articles.filter(function (x) {
+    return x.featured;
+  });
+  featuredPosts.shift();
+  if (featuredPosts.length > 2) {
+    featuredPosts.length = 2;
+  }
+
+  // Create the context
+  let context = {
+    featuredPosts: featuredPosts
+  };
+
+  // Compile the template data into a function
+  let templateScript = Handlebars.compile(template);
+  let html = templateScript(context);
+
+  $("#small-featured-posts").append(html);
 }
