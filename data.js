@@ -13,7 +13,7 @@ const articles = [
     subtitle:
       "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.",
     category: categories.FOOD,
-    date: new Date("12/12/2012"),
+    date: new Date("12/12/2015"),
     author: "John Green",
     featured: true,
     content:
@@ -61,7 +61,7 @@ const articles = [
     subtitle:
       "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.",
     category: categories.EVENTS,
-    date: new Date("12/12/2012"),
+    date: new Date("12/12/2017"),
     author: "John Green",
     featured: false,
     content:
@@ -85,7 +85,7 @@ const articles = [
     subtitle:
       "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.",
     category: categories.DRINKS,
-    date: new Date("12/12/2012"),
+    date: new Date("12/12/2013"),
     author: "John Green",
     featured: false,
     content:
@@ -109,7 +109,7 @@ const articles = [
     subtitle:
       "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.",
     category: categories.ART,
-    date: new Date("12/12/2012"),
+    date: new Date("12/12/2014"),
     author: "John Green",
     featured: false,
     content:
