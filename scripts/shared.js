@@ -1,6 +1,7 @@
 var dateOptions = { year: "numeric", month: "short", day: "numeric" };
 
 // GET PARAMETERS FROM URL
+// Taken from stack overflow as it is here.
 function getParameterByName(name, url) {
   if (!url) url = window.location.href;
   name = name.replace(/[\[\]]/g, "\\$&");
@@ -30,8 +31,8 @@ function categoryNavigation() {
   $("#categories-list").prepend(html);
 }
 
-$("#search-form").keyup(function (e) {
-  if (e.keyCode === 13) {
+$("#search-form").keyup(function (event) {
+  if (event.keyCode === 13) {
     let newURL = "search.html?name=" + $("#search-form").val();
     window.location.href = newURL;
   }
