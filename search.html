@@ -29,10 +29,9 @@
       <div class="row flex-nowrap justify-content-between align-items-center">
         <div class="col-4 pt-1">
         </div>
-        <div id="logo" class="col-4 text-center"></div>
-        <script id="tmpl-logo" type="text/x-handlebars-template">
-          <a class="blog-header-logo text-capitalize text-dark" href="index.html">{{name}} Milan</a>
-        </script>
+        <div class="col-4 text-center">
+          <a class="blog-header-logo text-dark" href="index.html">Search Milan</a>
+        </div>
         <div class="col-4 d-flex justify-content-end align-items-center">
           <a class="text-muted" href="#" aria-label="Search">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
@@ -63,14 +62,16 @@
   <main role="main" class="container">
     <div class="row">
       <div class="blog-main">
-        <div id="category-articles"></div>
-        <script id="tmpl-category-articles" type="text/x-handlebars-template">
-          {{#each categoryArticles}}
+        <!-- SEARCH RESULTS -->
+        <div id="search-results"></div>
+        <script id="tmpl-search-results" type="text/x-handlebars-template">
+          <h2 class="display-2 pb-3 text-center pt-4">{{numberOfResults}} articles match your search</h2>
+          {{#each searchResults}}
             <div class="row no-gutters border shadow rounded overflow-hidden flex-md-row mb-4 position-relative">
               <img class="col-md-3 card-img-left flex-auto d-none d-md-block"  src="{{image}}" data-holder-rendered="true">
               <div class="col-md-6 p-4 d-flex flex-column position-static">
                 <h3 class="mb-0">{{title}}</h3>
-                <p class="blog-post-meta pt-2">{{date}} by <fake class="text-primary">{{author}}</fake></p>
+                <p class="blog-post-meta pt-2">{{date}} by <fake class="text-primary">{{author}}</fake> in <a href="{{categoryLink}}"><strong class="d-inline-block mb-2 text-success">{{category}}</strong></a></p>
                 <p class="lead my-3">{{subtitle}}</p>
                 <a href="{{articleLink}}" class="stretched-link">Continue reading</a>
               </div>
@@ -129,7 +130,7 @@
   <!-- Custom JavaScript -->
   <script src="scripts/shared.js" type="text/javascript"></script>
   <script src="scripts/data.js" type="text/javascript"></script>
-  <script src="scripts/categories.js" type="text/javascript"></script>
+  <script src="scripts/search.js" type="text/javascript"></script>
 </body>
 
 </html>

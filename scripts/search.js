@@ -1,8 +1,8 @@
 // VARIABLES
 var pagesToShow = 1;
-var categoryName = getParameterByName("name");
-var categoryArticles = articles
-  .filter(art => art.category.toLowerCase() == categoryName)
+var searchCriteria = getParameterByName("name");
+var searchResults = articles
+  .filter(art => art.title.toLowerCase().includes(searchCriteria.toLowerCase()))
   .sort((first, second) => {
     if (first.date > second.date) return -1;
     else if (first.date < second.date) return 1;
@@ -12,6 +12,7 @@ var categoryArticles = articles
     return {
       title: x.title,
       image: "img/" + x.image,
+      category: x.category,
       subtitle: x.subtitle,
       author: x.author,
       date: x.date.toLocaleDateString("en-US", dateOptions),
@@ -30,59 +31,42 @@ var categoryArticles = articles
 
 // SETUP
 categoryNavigation();
-customizeLogo();
-showCategoryArticles();
-
-function customizeLogo() {
-  // Retrieve the template data from the HTML
-  let template = $("#tmpl-logo").html();
-
-  // Create the context
-  let context = {
-    name: categoryName
-  };
-
-  // Compile the template data into a function
-  let templateScript = Handlebars.compile(template);
-  let html = templateScript(context);
-
-  $("#logo").html(html);
-
-  setPagingButtonsStatus();
-}
+showSearchResults();
 
 // RECENT POSTS
-function showCategoryArticles() {
+function showSearchResults() {
   // Retrieve the template data from the HTML
-  let template = $("#tmpl-category-articles").html();
+  let template = $("#tmpl-search-results").html();
 
-  let newArticles = [];
+  let newResults = [];
   let startingIndex = (pagesToShow - 1) * 5;
   for (let i = 0; i < 4; i++) {
     let newIndex = startingIndex + i;
-    if (newIndex >= categoryArticles.length) {
+    if (newIndex >= searchResults.length) {
       break;
     }
-    newArticles.push(categoryArticles[newIndex]);
+    newResults.push(searchResults[newIndex]);
   }
+  console.log(newResults);
 
   // Create the context
   let context = {
-    categoryArticles: newArticles
+    numberOfResults: searchResults.length,
+    searchResults: newResults
   };
 
   // Compile the template data into a function
   let templateScript = Handlebars.compile(template);
   let html = templateScript(context);
 
-  $("#category-articles").append(html);
+  $("#search-results").append(html);
 
   setPagingButtonsStatus();
 }
 
 // OLDER & NEWER BUTTONS - Interactions
 function setPagingButtonsStatus() {
-  if (categoryArticles.length <= pagesToShow * 5) {
+  if (searchResults.length <= pagesToShow * 5) {
     $("#older-posts-btn").addClass("disabled");
   } else {
     $("#older-posts-btn").removeClass("disabled");
@@ -91,6 +75,6 @@ function setPagingButtonsStatus() {
 
 $("#older-posts-btn").click(function(event) {
   pagesToShow++;
-  showCategoryArticles();
+  showSearchResults();
   event.preventDefault();
 });
