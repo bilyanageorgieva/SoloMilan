@@ -27,5 +27,12 @@ function categoryNavigation() {
   let templateScript = Handlebars.compile(template);
   let html = templateScript(context);
 
-  $("#categories-list").append(html);
+  $("#categories-list").prepend(html);
 }
+
+$("#search-form").keyup(function (e) {
+  if (e.keyCode === 13) {
+    let newURL = "search.html?name=" + $("#search-form").val();
+    window.location.href = newURL;
+  }
+});

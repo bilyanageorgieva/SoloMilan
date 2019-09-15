@@ -1,3 +1,8 @@
 .single-post-image {
   height: 100%;
 }
+
+*:focus {
+    outline-width: 0;
+    outline: none;
+}
