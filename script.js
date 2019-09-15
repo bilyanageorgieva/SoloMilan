@@ -1,13 +1,14 @@
 // SHARED SETUP
 var dateOptions = { year: "numeric", month: "short", day: "numeric" };
 var recentPostsPage = 1;
-
+var singleArticleId = "villa-necchi-campiglio"
 // START
 categoryNavigation();
 bigFeaturedArticle();
 smallFeaturedArticles();
 archives();
 recentPosts();
+singleArticle();
 
 // CATEGORY NAMES IN NAV BAR
 function categoryNavigation() {
@@ -44,7 +45,6 @@ function bigFeaturedArticle() {
   // Compile the template data into a function
   let templateScript = Handlebars.compile(template);
   let html = templateScript(context);
-
   $("#big-featured-post").prepend(html);
 }
 
@@ -206,3 +206,34 @@ $("#newer-posts-btn").click(function(event) {
   goToPosts();
   event.preventDefault();
 });
+
+// SINGLE POST PAGE
+function singleArticle() {
+  // Retrieve the template data from the HTML
+  let template = $("#tmpl-single-article").html();
+
+  let singleArticle = articles.find(x => {
+    return x.id === singleArticleId;
+  });
+
+  // Create the context
+  let context = {
+    image: singleArticle.image,
+    title: singleArticle.title,
+    content: singleArticle.content,
+    author: singleArticle.author,
+    date: singleArticle.date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }),
+    category: singleArticle.category,
+    hours: singleArticle.hours.map(x => { return { hour: x } }),
+    prices: singleArticle.prices.map(x => { return { price: x } }),
+    website: singleArticle.website,
+    maps: singleArticle.maps,
+    tripAdvisor: singleArticle.tripAdvisor
+  };
+
+  // Compile the template data into a function
+  let templateScript = Handlebars.compile(template);
+  let html = templateScript(context);
+
+  $("#single-article").html(html);
+}
