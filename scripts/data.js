@@ -11,7 +11,7 @@ const articles = [
   {
     id: "villa-necchi-campiglio",
     title: "Villa Necchi Campiglio",
-    image: "img/villa-necchi-campiglio.jpg",
+    image: "villa-necchi-campiglio.jpg",
     subtitle:
       "Multiple lines of text that form the lede. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do. Lorem ipsum dolor sit amet.",
     category: categories.ART,
@@ -29,7 +29,7 @@ const articles = [
   {
     id: "villa-belgoiojoso-bonaparte",
     title: "Villa Belgoiojoso Bonaparte",
-    image: "img/villa-belgoiojoso-bonaparte.jpg",
+    image: "villa-belgoiojoso-bonaparte.jpg",
     subtitle:
       "Multiple lines of text that form the lede, informing new readers quickly and efficiently.",
     category: categories.NATURE,
@@ -47,7 +47,7 @@ const articles = [
   {
     id: "san-bernadino-alle-ossa",
     title: "San Bernadino Alle Ossa",
-    image: "img/san-bernadino-alle-ossa.jpg",
+    image: "san-bernadino-alle-ossa.jpg",
     subtitle:
       "Multiple lines of text that form the lede, informing new readers quickly and efficiently.",
     category: categories.CULTURE,
@@ -65,7 +65,7 @@ const articles = [
   {
     id: "salsamenteria-di-parma",
     title: "Salsamenteria Di Parma",
-    image: "img/salsamenteria-di-parma.jpeg",
+    image: "salsamenteria-di-parma.jpeg",
     subtitle:
       "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.",
     category: categories.FOOD,
@@ -83,7 +83,7 @@ const articles = [
   {
     id: "pizzeria-da-biagio",
     title: "Pizzeria Da Biagio",
-    image: "img/pizzeria-da-biagio.jpeg",
+    image: "pizzeria-da-biagio.jpeg",
     subtitle:
       "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.",
     category: categories.FOOD,
@@ -101,7 +101,7 @@ const articles = [
   {
     id: "orto-botanico-di-brera",
     title: "Orto Botanico Di Brera",
-    image: "img/orto-botanico-di-brera.jpg",
+    image: "orto-botanico-di-brera.jpg",
     subtitle:
       "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.",
     category: categories.NATURE,
@@ -119,7 +119,7 @@ const articles = [
   {
     id: "mercatino-dell-usato",
     title: "Mercatino Dell'usato",
-    image: "img/mercatino-dell-usato.jpg",
+    image: "mercatino-dell-usato.jpg",
     subtitle:
       "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.",
     category: categories.CULTURE,
@@ -137,7 +137,7 @@ const articles = [
   {
     id: "galleria-darte-moderna",
     title: "Galleria d'Arte Moderna",
-    image: "img/galleria-darte-moderna.jpg",
+    image: "galleria-darte-moderna.jpg",
     subtitle:
       "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.",
     category: categories.ART,
@@ -155,7 +155,7 @@ const articles = [
   {
     id: "festa-delle-lanterne",
     title: "Festa Delle Lanterne",
-    image: "img/festa-delle-lanterne.jpg",
+    image: "festa-delle-lanterne.jpg",
     subtitle:
       "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.",
     category: categories.CULTURE,
@@ -173,7 +173,7 @@ const articles = [
   {
     id: "civico-planetario-hoepli",
     title: "Civico Planetario Hoepli",
-    image: "img/civico-planetario-hoepli.jpg",
+    image: "civico-planetario-hoepli.jpg",
     subtitle:
       "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.",
     category: categories.CULTURE,
@@ -191,7 +191,7 @@ const articles = [
   {
     id: "bar-anny",
     title: "Bar Anny",
-    image: "img/bar-anny.jpg",
+    image: "bar-anny.jpg",
     subtitle:
       "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.",
     category: categories.DRINKS,

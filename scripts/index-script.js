@@ -1,33 +1,13 @@
-// SHARED SETUP
+// SETUP
 var dateOptions = { year: "numeric", month: "short", day: "numeric" };
 var recentPostsPage = 1;
-var singleArticleId = "villa-necchi-campiglio"
+
 // START
 categoryNavigation();
 bigFeaturedArticle();
 smallFeaturedArticles();
 archives();
 recentPosts();
-singleArticle();
-
-// CATEGORY NAMES IN NAV BAR
-function categoryNavigation() {
-  // Retrieve the template data from the HTML
-  let template = $("#tmpl-categories-list").html();
-
-  // Create the context
-  let context = {
-    categories: Object.values(categories).map(function(x) {
-      return { name: x };
-    })
-  };
-
-  // Compile the template data into a function
-  let templateScript = Handlebars.compile(template);
-  let html = templateScript(context);
-
-  $("#categories-list").append(html);
-}
 
 // BIG FEATURED ARTICLE
 function bigFeaturedArticle() {
@@ -40,7 +20,12 @@ function bigFeaturedArticle() {
   });
 
   // Create the context
-  let context = { title: featured.title, subtitle: featured.subtitle, image: featured.image };
+  let context = {
+    title: featured.title,
+    subtitle: featured.subtitle,
+    image: "img/" + featured.image,
+    articleLink: "articles.html?name=" + featured.id
+  };
 
   // Compile the template data into a function
   let templateScript = Handlebars.compile(template);
@@ -64,7 +49,8 @@ function smallFeaturedArticles() {
         subtitle: x.subtitle,
         date: x.date.toLocaleDateString("en-US", dateOptions),
         category: x.category,
-        image: x.image
+        image: "img/" + x.image,
+        articleLink: "articles.html?name=" + x.id
       };
     });
 
@@ -142,7 +128,9 @@ function recentPosts() {
           subtitle: x.content.substring(0, 490) + "...",
           author: x.author,
           date: x.date.toLocaleDateString("en-US", dateOptions),
-          category: x.category
+          category: x.category,
+          articleLink: "articles.html?name=" + x.id,
+          categoryLink: "categories.html?name=" + x.category.toLowerCase()
         };
       });
 
@@ -206,34 +194,3 @@ $("#newer-posts-btn").click(function(event) {
   goToPosts();
   event.preventDefault();
 });
-
-// SINGLE POST PAGE
-function singleArticle() {
-  // Retrieve the template data from the HTML
-  let template = $("#tmpl-single-article").html();
-
-  let singleArticle = articles.find(x => {
-    return x.id === singleArticleId;
-  });
-
-  // Create the context
-  let context = {
-    image: singleArticle.image,
-    title: singleArticle.title,
-    content: singleArticle.content,
-    author: singleArticle.author,
-    date: singleArticle.date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }),
-    category: singleArticle.category,
-    hours: singleArticle.hours.map(x => { return { hour: x } }),
-    prices: singleArticle.prices.map(x => { return { price: x } }),
-    website: singleArticle.website,
-    maps: singleArticle.maps,
-    tripAdvisor: singleArticle.tripAdvisor
-  };
-
-  // Compile the template data into a function
-  let templateScript = Handlebars.compile(template);
-  let html = templateScript(context);
-
-  $("#single-article").html(html);
-}
