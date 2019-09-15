@@ -35,7 +35,7 @@ showCategoryArticles();
 
 function showCategoryName() {
   // Retrieve the template data from the HTML
-  let template = $("#tmpl-category-name").html();
+  let template = $("#tmpl-logo").html();
 
   // Create the context
   let context = {
@@ -46,7 +46,7 @@ function showCategoryName() {
   let templateScript = Handlebars.compile(template);
   let html = templateScript(context);
 
-  $("#category-name").html(html);
+  $("#logo").html(html);
 
   setPagingButtonsStatus();
 }
