@@ -1,3 +1,5 @@
+var dateOptions = { year: "numeric", month: "short", day: "numeric" };
+
 // GET PARAMETERS FROM URL
 function getParameterByName(name, url) {
   if (!url) url = window.location.href;
@@ -17,7 +19,7 @@ function categoryNavigation() {
   // Create the context
   let context = {
     categories: Object.values(categories).map(function(x) {
-      return { name: x, link:  "categories.html?name=" + x};
+      return { name: x, link:  "categories.html?name=" + x.toLowerCase()};
     })
   };
 

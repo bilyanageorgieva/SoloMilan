@@ -1,5 +1,4 @@
 // SETUP
-var dateOptions = { year: "numeric", month: "short", day: "numeric" };
 var recentPostsPage = 1;
 
 // START
@@ -76,7 +75,7 @@ function archives() {
   // Retrieve the template data from the HTML
   let template = $("#tmpl-archives").html();
 
-  // Get the second and third featured posts
+  // Get all the inidivdual months
   let allMonths = Array.from(
     new Set(
       articles
@@ -115,7 +114,7 @@ function recentPosts() {
 
   let recentPosts = [];
   if (articles.length > (recentPostsPage - 1) * 5) {
-    // Get the second and third featured posts
+    // Get all the posts ordered by date
     recentPosts = articles
       .sort(function(first, second) {
         if (first.date > second.date) return -1;
@@ -152,19 +151,13 @@ function recentPosts() {
   let templateScript = Handlebars.compile(template);
   let html = templateScript(context);
 
-  $("#recent-posts").html(html);
+  $("#recent-posts").append(html);
 
   setPagingButtonsStatus();
 }
 
 // OLDER & NEWER BUTTONS - Interactions
 function setPagingButtonsStatus() {
-  if (recentPostsPage == 1) {
-    $("#newer-posts-btn").addClass("disabled");
-  } else {
-    $("#newer-posts-btn").removeClass("disabled");
-  }
-
   if (articles.length <= recentPostsPage * 5) {
     $("#older-posts-btn").addClass("disabled");
   } else {
@@ -172,25 +165,8 @@ function setPagingButtonsStatus() {
   }
 }
 
-function goToPosts() {
-  $("html, body").animate(
-    {
-      scrollTop: $("#recent-posts").offset().top
-    },
-    500
-  );
-}
-
 $("#older-posts-btn").click(function(event) {
   recentPostsPage++;
   recentPosts();
-  goToPosts();
-  event.preventDefault();
-});
-
-$("#newer-posts-btn").click(function(event) {
-  recentPostsPage--;
-  recentPosts();
-  goToPosts();
   event.preventDefault();
 });

@@ -1,5 +1,5 @@
 // SETUP
-ategoryNavigation();
+categoryNavigation();
 singleArticle(getParameterByName("name"));
 
 // SINGLE POST PAGE
