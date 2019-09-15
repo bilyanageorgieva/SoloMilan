@@ -61,7 +61,7 @@
           {{#each searchResults}}
             <div class="row no-gutters border shadow rounded overflow-hidden flex-md-row mb-4 position-relative">
               <div class="col-md-3 flex-auto d-none d-md-block" style="overflow: hidden">
-                <img class="card-img-left" src="{{image}}" data-holder-rendered="true" style="height: 100%; position:absolute;">
+                <img class="card-img-left" alt="Image of {{title}}" src="{{image}}" data-holder-rendered="true" style="height: 100%; position:absolute;">
               </div>
               <div class="col-md-6 p-4 d-flex flex-column position-static">
                 <h3 class="mb-0">{{title}}</h3>
@@ -86,9 +86,9 @@
                       
                   <!-- LINKS -->
                   <h4 class="font-italic mt-4">Learn more</h4>
-                  <a href="{{maps}}"><img class="mt-2" src="img/maps-btn.png" alt="Google Maps button" style="height: 40px; width: 40px;"></a>
-                  <a href="{{website}}"><img class="mt-2 ml-1" src="img/website-btn.png" alt="Specific website button" style="height: 40px; width: 40px;"></a>
-                  <a href="{{tripadvisor}}"><img class="mt-2 ml-1" src="img/tripadvisor-btn.png" alt="Tripadvisor button" style="height: 40px; width: 40px;"></a>
+                  <a href="{{maps}}"><img class="mt-2" alt="Google Maps Button" src="img/maps-btn.png" alt="Google Maps button" style="height: 40px; width: 40px;"></a>
+                  <a href="{{website}}"><img class="mt-2 ml-1" alt="{{title}} Website Button" src="img/website-btn.png" alt="Specific website button" style="height: 40px; width: 40px;"></a>
+                  <a href="{{tripadvisor}}"><img class="mt-2 ml-1" alt="Tripadvisor Button" src="img/tripadvisor-btn.png" alt="Tripadvisor button" style="height: 40px; width: 40px;"></a>
                 </div>
               </aside><!-- /.blog-sidebar -->
             </div>

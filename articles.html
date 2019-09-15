@@ -53,7 +53,7 @@
   <script id="tmpl-single-article" type="text/x-handlebars-template">
     <!-- IMAGE -->
     <div style="height: 80vh; overflow: hidden;" >
-      <img src="{{image}}" class="img-fluid single-post-image" style="min-width: 100%;">
+      <img src="{{image}}" alt="Image of {{title}}" class="img-fluid single-post-image" style="min-width: 100%;">
     </div>
     <!-- TITLE AND TEXT -->
     <div class="row mt-4 pt-4">
@@ -80,9 +80,9 @@
     
           <!-- LINKS -->
           <h4 class="font-italic mt-4">Learn more</h4>
-          <a href="{{maps}}"><img class="mt-2" src="img/maps-btn.png" alt="Google Maps button" style="height: 40px; width: 40px;"></a>
-          <a href="{{website}}"><img class="mt-2 ml-1" src="img/website-btn.png" alt="Specific website button" style="height: 40px; width: 40px;"></a>
-          <a href="{{tripadvisor}}"><img class="mt-2 ml-1" src="img/tripadvisor-btn.png" alt="Tripadvisor button" style="height: 40px; width: 40px;"></a>
+          <a href="{{maps}}"><img class="mt-2" alt="Google Maps Button" src="img/maps-btn.png" alt="Google Maps button" style="height: 40px; width: 40px;"></a>
+          <a href="{{website}}"><img class="mt-2 ml-1" alt="{{title}} Webiste Button" src="img/website-btn.png" alt="Specific website button" style="height: 40px; width: 40px;"></a>
+          <a href="{{tripadvisor}}"><img class="mt-2 ml-1" alt="Tripadvisor Button" src="img/tripadvisor-btn.png" alt="Tripadvisor button" style="height: 40px; width: 40px;"></a>
         </div>
       </aside><!-- /.blog-sidebar -->
     </div><!-- /.row -->
