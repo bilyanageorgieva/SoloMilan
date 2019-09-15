@@ -49,14 +49,16 @@
     <!-- BIG FEATURED BLOG POST -->
     <div id="big-featured-post" class="row mb-2">
       <script id="tmpl-big-featured-post" type="text/x-handlebars-template">
-              <div class="col-md-12">
+              <div class="col">
                 <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative";">
                   <div class="col p-4 d-flex flex-column position-static">
                     <h1 class="display-4 font-italic">{{title}}</h1>
                     <p class="lead my-3">{{subtitle}}</p>
                     <a href="{{articleLink}}" class="stretched-link">Continue reading</a>
                   </div>
-                  <img class="card-img-right flex-auto d-none d-md-block" style="width: 48.5%; height: 250px;" src="{{image}}" data-holder-rendered="true">
+                  <div class="col-md-6 flex-auto d-none d-md-block" style="overflow: hidden;">
+                    <img class="card-img-left" src="{{image}}" data-holder-rendered="true" style="min-height: 100%; min-width: 100%; position:absolute; max-height: 150%; max-width: 150%;">
+                  </div>
                 </div>
               </div>
           </script>
@@ -118,18 +120,6 @@
           <h4 class="font-italic">About</h4>
           <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit
             amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-        </div>
-
-        <!-- ARCHIVES BY DATE -->
-        <div class="p-4">
-          <h4 class="font-italic">Archives</h4>
-          <ol id="archives" class="list-unstyled mb-0">
-            <script id="tmpl-archives" type="text/x-handlebars-template">
-            {{#each months}}
-              <li><a href="#">{{month}}</a></li> 
-            {{/each}}
-            </script>
-          </ol>
         </div>
 
         <!-- SOCIAL LINKS -->

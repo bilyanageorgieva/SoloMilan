@@ -5,7 +5,6 @@ var recentPostsPage = 1;
 categoryNavigation();
 bigFeaturedArticle();
 smallFeaturedArticles();
-archives();
 recentPosts();
 
 // BIG FEATURED ARTICLE
@@ -70,43 +69,6 @@ function smallFeaturedArticles() {
   $("#small-featured-posts").append(html);
 }
 
-// ARCHIVES
-function archives() {
-  // Retrieve the template data from the HTML
-  let template = $("#tmpl-archives").html();
-
-  // Get all the inidivdual months
-  let allMonths = Array.from(
-    new Set(
-      articles
-        .sort(function(first, second) {
-          if (first.date > second.date) return -1;
-          else if (first.date < second.date) return 1;
-          else return 0;
-        })
-        .map(x => {
-          return x.date.toLocaleDateString("en-US", {
-            month: "long",
-            year: "numeric"
-          });
-        })
-    )
-  ).map(x => {
-    return { month: x };
-  });
-
-  // Create the context
-  let context = {
-    months: allMonths
-  };
-
-  // Compile the template data into a function
-  let templateScript = Handlebars.compile(template);
-  let html = templateScript(context);
-
-  $("#archives").append(html);
-}
-
 // RECENT POSTS
 function recentPosts() {
   // Retrieve the template data from the HTML
@@ -159,9 +121,9 @@ function recentPosts() {
 // OLDER & NEWER BUTTONS - Interactions
 function setPagingButtonsStatus() {
   if (articles.length <= recentPostsPage * 5) {
-    $("#older-posts-btn").addClass("disabled");
+    $("#older-posts-btn").hide();
   } else {
-    $("#older-posts-btn").removeClass("disabled");
+    $("#older-posts-btn").show();
   }
 }
 

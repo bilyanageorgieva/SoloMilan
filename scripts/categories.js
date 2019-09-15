@@ -83,9 +83,9 @@ function showCategoryArticles() {
 // OLDER & NEWER BUTTONS - Interactions
 function setPagingButtonsStatus() {
   if (categoryArticles.length <= pagesToShow * 5) {
-    $("#older-posts-btn").addClass("disabled");
+    $("#older-posts-btn").hide();
   } else {
-    $("#older-posts-btn").removeClass("disabled");
+    $("#older-posts-btn").show();
   }
 }
 

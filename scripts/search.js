@@ -31,9 +31,29 @@ var searchResults = articles
 
 // SETUP
 categoryNavigation();
+showSearchResultsNumber();
 showSearchResults();
 
-// RECENT POSTS
+//SEARCH RESULTS NUMBER
+function showSearchResultsNumber() {
+  // Retrieve the template data from the HTML
+  let template = $("#tmpl-search-results-number").html();
+
+  // Create the context
+  let context = {
+    numberOfResults: searchResults.length
+  };
+
+  // Compile the template data into a function
+  let templateScript = Handlebars.compile(template);
+  let html = templateScript(context);
+
+  $("#search-results-number").append(html);
+
+  setPagingButtonsStatus();
+}
+
+// SEARCH RESULTS
 function showSearchResults() {
   // Retrieve the template data from the HTML
   let template = $("#tmpl-search-results").html();
@@ -47,11 +67,9 @@ function showSearchResults() {
     }
     newResults.push(searchResults[newIndex]);
   }
-  console.log(newResults);
 
   // Create the context
   let context = {
-    numberOfResults: searchResults.length,
     searchResults: newResults
   };
 
@@ -67,9 +85,9 @@ function showSearchResults() {
 // OLDER & NEWER BUTTONS - Interactions
 function setPagingButtonsStatus() {
   if (searchResults.length <= pagesToShow * 5) {
-    $("#older-posts-btn").addClass("disabled");
+    $("#older-posts-btn").hide();
   } else {
-    $("#older-posts-btn").removeClass("disabled");
+    $("#older-posts-btn").show();
   }
 }
 
